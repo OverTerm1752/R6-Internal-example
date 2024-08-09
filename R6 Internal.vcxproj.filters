@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{d54fce10-3f2f-4533-9a67-692b0c885a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Managers">
+      <UniqueIdentifier>{fcb5b228-c771-4058-8933-206e10a7e1ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\mini sdk">
+      <UniqueIdentifier>{0ebfd51d-8c91-4eca-96fd-ac5b75df4272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\QB Bypass">
+      <UniqueIdentifier>{562405fa-0438-4c1e-8159-367b68336bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imgui">
+      <UniqueIdentifier>{eab324ac-9d8d-44b2-8b9d-04ccc8aba294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXsdk">
+      <UniqueIdentifier>{635d174f-3124-415e-8487-c224daf56c13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Minhook">
+      <UniqueIdentifier>{d81d8790-eb14-4097-b044-19af9363089f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Definetions">
+      <UniqueIdentifier>{aeb73a30-4d73-4f65-ad32-edc616f9d5d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DLLMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Minhook\src\buffer.c">
+      <Filter>Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Minhook\src\hook.c">
+      <Filter>Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Minhook\src\trampoline.c">
+      <Filter>Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Minhook\src\HDE\hde32.c">
+      <Filter>Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Minhook\src\HDE\hde64.c">
+      <Filter>Minhook</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>SDK\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundManager.h">
+      <Filter>SDK\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk.h">
+      <Filter>SDK\mini sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="get.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hexarys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vmmath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="outlines.h">
+      <Filter>SDK\mini sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="Bypass.h">
+      <Filter>SDK\QB Bypass</Filter>
+    </ClInclude>
+    <ClInclude Include="DX\d3dx11.h">
+      <Filter>DXsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="DX\d3dx11async.h">
+      <Filter>DXsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="DX\d3dx11core.h">
+      <Filter>DXsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="DX\d3dx11tex.h">
+      <Filter>DXsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx9.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx11.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Defentionions.h">
+      <Filter>Definetions</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\include\MinHook.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\buffer.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\trampoline.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\HDE\hde32.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\HDE\hde64.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\HDE\pstdint.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\HDE\table32.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Minhook\src\HDE\table64.h">
+      <Filter>Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="otherstuff.h">
+      <Filter>Definetions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="DX\d3dx11.lib">
+      <Filter>DXsdk</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui\.gitkeep">
+      <Filter>Imgui</Filter>
+    </None>
+    <None Include="Minhook\.gitkeep">
+      <Filter>Minhook</Filter>
+    </None>
+  </ItemGroup>
+</Project>
