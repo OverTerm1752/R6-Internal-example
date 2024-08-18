@@ -1,5 +1,8 @@
 #include "GameManager.h"
 
+#include "get.h"
+
+#include "Driver.h"
 
 
 
@@ -48,81 +51,73 @@ namespace sdk
 
 
 
-	uint64_t GetReplication(uint64_t localcontroller)
+	uint64_t GetReplication(uint64_t Entity)
 	{
 
-
-		
 	LABEL_54:
-		uint64_t v165, Replication, v79, v155, v148, v150, v158, v159, v160, v161, v162, v163, v164, v33, v34, v35, v116, v113;
-		auto v123 = get::retaddr;
-		auto v118 = v123 & 0xFFFFFFFE00000000ui64;
-		v33 = ((unsigned __int64)get::GetPEBAddress() >> 0xC) - 0x2E15D02AFC317581i64;
-		LODWORD(v113) = 0xFA3573C3;
-		v34 = (unsigned int)((_DWORD)0x5CA8C3E + 1 - 0x5CA8C3D);
+		uint64_t v165, Replication, v79, v155, v148, v150, v158, v159, v160, v161, v162, v163, v164, v33, v34, v35, v116, v113, v111, v37;
+	LABEL_58:
+		v33 = ((unsigned __int64)get::GetPEBAddress() >> 0xC) - 0x5DFB6CC0C0478F69i64;
+		LODWORD(v111) = 0x58B5BDDA;
 		if (HIDWORD(v33))
-			v35 = v33 % v34;
+			v34 = v33 % 2;
 		else
-			v35 = (unsigned int)v33 % (unsigned int)v34;
-		v116 = v35;
-		LODWORD(v113) = 0xB6F6672D;
-		auto ang123 = *(_QWORD*)(localcontroller + 0x80);
-		if (v35)
+			v34 = (unsigned int)v33 % 2;
+		v113 = v34;
+		LODWORD(v111) = 0xC160E7F5;
+		if (v34)
 		{
-			v113 = v116;
-			Replication = ((((unsigned int)v118 ^ *(uint32_t*)(localcontroller + 0x80)) << 8) & 0xFF000000)
-				+ (unsigned __int64)(unsigned __int8)((v118 ^ *(_QWORD*)(localcontroller + 0x80)) >> 0x20)
-				+ (((v118 ^ *(_QWORD*)(localcontroller + 0x80)) >> 8) & 0xFF000000000000i64)
-				+ ((unsigned int)0xFF0000 & (unsigned int)((v118 ^ *(_QWORD*)(localcontroller + 0x80)) >> 0x18))
-				+ (((v118 ^ *(_QWORD*)(localcontroller + 0x80)) << 8) & 0xFF00000000000000ui64)
-				+ ((*(_QWORD*)(localcontroller + 0x80) << 0x20) & 0xFFFF00000000i64)
-				+ (WORD1(ang123) & 0xFF00)
-				- 0x6567D6E2DA8CBC56i64;
+			v111 = v113;
+			v37 = __ROL8__(driver->read<uint64_t>(Entity + 0x58), 0x23);
+			Replication = ((v37 >> 0x18) & 0xFF00000000i64)
+				+ ((v37 << 0x28) & 0xFF00000000000000ui64)
+				+ ((v37 << 8) & 0xFFFF0000000000i64)
+				+ (HIDWORD(v37) & 0xFF0000)
+				+ ((unsigned int)v37 & 0xFF00FFFF)
+				- 0x5DFB6CC0B2CCD8BEi64;
 			if (!Replication)
-				goto LABEL_54;
+				goto LABEL_58;
 		}
 		else
 		{
-			Replication = (unsigned __int8)(((v118 ^ *(_QWORD*)(localcontroller + 0x80)) - 0x6567D6E2DA8CBC56i64) >> 0x20) | (unsigned __int64)((unsigned int)0xFF0000 & (unsigned int)(((v118 ^ *(_QWORD*)(localcontroller + 0x80)) - 0x6567D6E2DA8CBC56i64) >> 0x18)) | (((v118 ^ *(_QWORD*)(localcontroller + 0x80)) - 0x6567D6E2DA8CBC56i64) << 8) & 0xFF00000000000000ui64 | ((((unsigned int)v118 ^ *(uint32_t*)(localcontroller + 0x80)) + 0x257343AA) << 8) & 0xFF000000 | (unsigned __int64)(((((unsigned int)v118 ^ *(uint32_t*)(localcontroller + 0x80)) + 0x257343AA) >> 0x10) & 0xFF00) | (((v118 ^ *(_QWORD*)(localcontroller + 0x80)) - 0x6567D6E2DA8CBC56i64) >> 8) & 0xFF000000000000i64 | (((v118 ^ *(_QWORD*)(localcontroller + 0x80)) - 0x6567D6E2DA8CBC56i64) << 0x20) & 0xFFFF00000000i64;
+			v35 = __ROL8__(driver->read<uint64_t>(Entity + 0x58), 0x23) - 0x5DFB6CC0B2CCD8BEi64;
+			Replication = (v35 << 0x28) & 0xFF00000000000000ui64 | (v35 >> 0x18) & 0xFF00000000i64 | (unsigned int)v35 & 0xFF00FFFF | HIDWORD(v35) & 0xFF0000 | (v35 << 8) & 0xFFFF0000000000i64;
 			if (!Replication)
-				goto LABEL_54;
+				goto LABEL_58;
 		}
 
-
-		
 
 		return Replication;
+
 	};
 
 
+		
 
 
 
 
-	
-
-	uint64_t GetPawn(uint64_t Localplayer)
+	uint64_t GetPawn(uint64_t Entity)
 	{
-		uintptr_t v113, v53, v116, Temp, Pawn, v44, v12, v13, v14, v15, v16;
-		v12 = __ROR8__(get::GetPEBAddress(), 0xC) + 0x154AC7D939846129i64;
-		if (HIDWORD(v12))
-			v13 = v12 % 2;
-		else
-			v13 = (unsigned int)v12 % 2;
-		v14 = 0;
-		if (v13)
+		uintptr_t v113, v53, v116, Temp, Pawn, v44, v12, v13, v14, v15, v16, v7, v6, v98, v107;
+	LABEL_146:
+		v98 = (((unsigned __int64)get::GetPEBAddress() >> 0xC) ^ 0x291A6AD31A982A77i64) % 2;
+		LODWORD(v107) = 0xA0C0A6BF;
+		if (v98)
 		{
-			v16 = *(_QWORD*)(Localplayer + 0x68) ^ get::retaddr & 0xFFFFFFFE00000000ui64;
-			Pawn = v16 - 0x6777A8EFD6288071i64;
-			if (v16 == 0x6777A8EFD6288071i64)
-				return v14 && Pawn != 0;
-		}
-		else
-		{
-			Pawn = (*(_QWORD*)(Localplayer + 0x68) - 0x6777A8EFD6288071i64) ^ get::retaddr & 0xFFFFFFFE00000000ui64;
+			driver->read<uint64_t>(v107 = v98);
+			Pawn = (driver->read<uint64_t>(Entity + 0x100) + 0x38783CFC199BA178i64) ^ 0x1162562F03038B0Fi64;
 			if (!Pawn)
-				return v14 && Pawn != 0;
+				goto LABEL_146;
 		}
+		else
+		{
+			v6 = driver->read<uint64_t>(Entity + 0x100) ^ 0x1162562F03038B0Fi64;
+			Pawn = v6 + 0x38783CFC199BA178i64;
+			if (v6 == 0xC787C303E6645E88ui64)
+				goto LABEL_146;
+		}
+
 
 		return Pawn;
 	}
@@ -131,31 +126,68 @@ namespace sdk
 
 	uint64_t GetActor(uint64_t Pawn)
 	{
-
-
-		auto v3 = Pawn;
-		uint64_t v6 = 0;
-		uint64_t v5 = 0;
-		uint64_t v4 = 0;
-		uint64_t v24 = 0;
-		uint64_t v23 = (__ROR8__(get::GetPEBAddress(), 0xC) ^ 0x26E100F55EAA2F51ui64) % 4;
-		if (!v23 || (v24 = v23, v23 == 1))
+		uintptr_t v105, v7, v98, Temp, v102, v97, Actor, Component, v113, v9, v10, v11, v12, v13, v8, v107, v106, v14, v26, v103;
+	LABEL_16:
+	LABEL_10:
+		v8 = 0x1E5EE2E1i64 - __ROR8__(get::GetPEBAddress(), 0xC);
+		LODWORD(v107) = 0xA32C56DF;
+		if (HIDWORD(v8))
+			v9 = v8 % 6;
+		else
+			v9 = (unsigned int)v8 % 6;
+		v105 = v9;
+		LODWORD(v107) = 0x72E8E797;
+		if (v9)
 		{
-			v4 = *(_QWORD*)(v3 + 0x18) - 0x77EF1E5E897ABC87i64;
-			v5 = get::retaddr & 0xFFFFFFFE00000000ui64 ^ 0x94DFC2662512AD3Dui64;
-		LABEL_5:
-			v6 = v4 ^ v5;
-			goto LABEL_6;
+			v106 = v105;
+			LODWORD(v107) = 0xD6333EED;
+			if (v105 == 1)
+			{
+				v12 = driver->read<uint64_t>(Pawn + 0x18) + 0x11i64;
+				v11 = __ROL8__(
+					(v12 << 8) & 0xFF00000000000000ui64 | (v12 << 0x10) & 0xFF000000000000i64 | ((unsigned int)(driver->read<uint32_t>(Pawn + 0x18) + 0x11) >> 0x10) & 0xFF00 | ((driver->read<uint32_t>(Pawn + 0x18) + 0x11) << 8) & 0xFF000000 | BYTE1(v12) | ((unsigned __int64)(unsigned __int8)v12 << 0x20) | v12 & 0xFF0000000000i64 | (v12 >> 0x28) & 0xFF0000,
+					0xC);
+				goto LABEL_16;
+			}
+			v102 = v106;
+			LODWORD(v107) = 0xEC9673DC;
+			if (v106 == 2)
+			{
+				v13 = __ROL8__(driver->read<uint64_t>(Pawn + 0x18), 0xC);
+				v14 = (v13 << 8) & 0xFF00000000000000ui64 | (v13 << 0x10) & 0xFF000000000000i64 | WORD1(v13) & 0xFF00 | ((_DWORD)v13 << 8) & 0xFF000000 | BYTE1(v13) | ((unsigned __int64)(unsigned __int8)v13 << 0x20) | v13 & 0xFF0000000000i64 | (v13 >> 0x28) & 0xFF0000;
+			}
+			else
+			{
+				v103 = v102;
+				LODWORD(v107) = 0x6DE1247C;
+				if (v102 == 3)
+				{
+					Actor = __ROL8__(driver->read<uint64_t>(Pawn + 0x18), 0xC) + 0x11i64;
+					goto LABEL_10;
+				}
+				v98 = v103;
+				LODWORD(v107) = 0x66B6F599;
+				if (v103 == 4)
+				{
+					v26 = driver->read<uint64_t>(Pawn + 0x18);
+					v11 = __ROL8__(
+						((v26 << 8) & 0xFF00000000000000ui64 | (driver->read<uint32_t>(Pawn + 0x18) << 8) & 0xFF000000 | (unsigned __int64)(WORD1(v26) & 0xFF00) | (v26 << 0x10) & 0xFF000000000000i64 | (v26 << 0x20) & 0xFF00000000i64 | v26 & 0xFF0000000000i64 | BYTE1(v26) | (v26 >> 0x28) & 0xFF0000)
+						+ 0x11,
+						0xC);
+					goto LABEL_16;
+				}
+				driver->read<uint64_t>(v107 = v98);
+				v97 = driver->read<uint64_t>(Pawn + 0x18);
+				v14 = __ROL8__(
+					(v97 << 8) & 0xFF00000000000000ui64 | (driver->read<uint32_t>(Pawn + 0x18) << 8) & 0xFF000000 | (unsigned __int64)(WORD1(v97) & 0xFF00) | (v97 << 0x10) & 0xFF000000000000i64 | (v97 << 0x20) & 0xFF00000000i64 | v97 & 0xFF0000000000i64 | BYTE1(v97) | (v97 >> 0x28) & 0xFF0000,
+					0xC);
+			}
+			v11 = v14 + 0x11;
+			goto LABEL_16;
 		}
-		v4 = 0x94DFC2662512AD3Dui64;
-		if (v24 != 2)
-		{
-			v5 = (*(_QWORD*)(v3 + 0x18) ^ get::retaddr & 0xFFFFFFFE00000000ui64) - 0x77EF1E5E897ABC87i64;
-			goto LABEL_5;
-		}
-		v6 = (*(_QWORD*)(v3 + 0x18) ^ get::retaddr & 0xFFFFFFFE00000000ui64 ^ 0x94DFC2662512AD3Dui64) - 0x77EF1E5E897ABC87i64;
-	LABEL_6:
-		return v6;
+		Actor = __ROL8__(driver->read<uint64_t>(Pawn + 0x18) + 0x11i64, 0xC);
+
+		return Actor;
 
 
 	}
@@ -174,69 +206,17 @@ namespace sdk
 
 	uint32_t GetActorHealth(uint64_t Actor)
 	{
-
 		auto v5 = get::retaddr >> 0x21;
-		auto DamageComponentID = *reinterpret_cast<uint8_t*>(Actor + 0x216);
-		auto a3 = *reinterpret_cast<uint64_t*>(*reinterpret_cast<uint64_t*>(Actor + 0xD8) + DamageComponentID * 8ul);
+		auto DamageComponentID = driver->read<uint8_t>(Actor + 0x216);
+		auto Component = driver->read<uint64_t>(driver->read<uint64_t>(Actor + 0xD8) + DamageComponentID * 8ul);
+		uintptr_t v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, Health;
+		v14 = 0x9AB69365354A9C35ui64 - __ROR8__(get::GetPEBAddress(), 0xC);
 
-		uint32_t Health_1 = 0;
-		uint64_t v29 = 0;
-		uint64_t v27 = 0;
-		uint64_t v26 = 0;
-		uint64_t v25 = 0;
-		uint64_t v24 = 0;
-		uint64_t v23 = 0;
-		uint64_t v17 = 0;
-		uint64_t v16 = 0x9AB69365354A9C35ui64 - __ROR8__(get::GetPEBAddress(), 0xC);
-		if (HIDWORD(v16))
-			v17 = v16 % 6;
-		else
-			v17 = (unsigned int)v16 % 6;
-		switch (v17)
-		{
-		case 0ui64:
-			v23 = __ROL4__(*(_DWORD*)(a3 + 0x18C) + 0x5AA97872, 0x1A);
-		LABEL_32:
-			LOBYTE(v24) = v23 ^ 0x9D;
-			v25 = v23 & 0xFF00 ^ 0x1B00;
-			v26 = v23 & 0xFFFF0000 ^ 0x1C0000;
-			v27 = v23 & 0xFF000000 ^ 0x90000000;
-			goto LABEL_75;
-		case 1ui64:
-			v24 = __ROL4__((*(_DWORD*)(a3 + 0x18C) + 0x5AA97872) ^ 0x901C1B9D, 0x1A);
-			goto LABEL_74;
-		case 2ui64:
-			v29 = __ROL4__(*(_DWORD*)(a3 + 0x18C), 0x1A) ^ 0x901C1B9D;
-			break;
-		case 3ui64:
-			v23 = __ROL4__(*(_DWORD*)(a3 + 0x18C), 0x1A) + 0x5AA97872;
-			goto LABEL_32;
-		case 4ui64:
-			v24 = __ROL4__(
-				((*(unsigned __int8*)(a3 + 0x18F) ^ 0x90) << 0x18)
-				+ (((*(unsigned __int8*)(a3 + 0x18E) ^ 0x1C) << 0x10) | *(unsigned __int8*)(a3 + 0x18C) ^ 0x9D | ((*(unsigned __int8*)(a3 + 0x18D) ^ 0x1B) << 8))
-				+ 0x5AA97872,
-				0x1A);
-			goto LABEL_74;
-		default:
-			v29 = __ROL4__(
-				*(unsigned __int8*)(a3 + 0x18C) ^ 0x9D | ((*(unsigned __int8*)(a3 + 0x18F) ^ 0x90) << 0x18) | ((*(unsigned __int8*)(a3 + 0x18E) ^ 0x1C) << 0x10) | ((*(unsigned __int8*)(a3 + 0x18D) ^ 0x1B) << 8),
-				0x1A);
-			break;
-		}
-		v24 = v29 + 0x5AA97872;
-	LABEL_74:
-		v25 = v24 & 0xFF00;
-		v26 = v24 & 0xFFFF0000;
-		v27 = v24 & 0xFF000000;
-	LABEL_75:
-		Health_1 = v27 & 0xFF000000 | (unsigned int)0xFF0000 & v26 | v25 & 0xFF00 | (unsigned __int8)v24;
-
-		if (Health_1)
-			return Health_1;
-		return 0;
+		auto overheadbestdev = driver->read<uint32_t>(Component + 0x1BC);
+		return Health = (overheadbestdev & 0xFF0000 | (unsigned __int8)BYTE1(overheadbestdev) | (overheadbestdev << 0x18) | HIWORD(overheadbestdev) & 0xFF00) == 0x200;
 
 
+		return Health & 0xFFFF;
 	}
 
 

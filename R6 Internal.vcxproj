@@ -147,10 +147,12 @@
   <ItemGroup>
     <ClInclude Include="Bypass.h" />
     <ClInclude Include="Defentionions.h" />
+    <ClInclude Include="Driver.h" />
     <ClInclude Include="DX\d3dx11.h" />
     <ClInclude Include="DX\d3dx11async.h" />
     <ClInclude Include="DX\d3dx11core.h" />
     <ClInclude Include="DX\d3dx11tex.h" />
+    <ClInclude Include="ExtBypass.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="get.h" />
     <ClInclude Include="hexarys.h" />
