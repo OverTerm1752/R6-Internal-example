@@ -37,6 +37,9 @@
     <Filter Include="Definetions">
       <UniqueIdentifier>{aeb73a30-4d73-4f65-ad32-edc616f9d5d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SDK\Memory">
+      <UniqueIdentifier>{a55f9f86-c243-46af-bba0-3bb52ea540d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DLLMain.cpp">
@@ -175,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="otherstuff.h">
       <Filter>Definetions</Filter>
+    </ClInclude>
+    <ClInclude Include="Driver.h">
+      <Filter>SDK\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtBypass.h">
+      <Filter>SDK\QB Bypass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
